@@ -23,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
     private  boolean logou = false;
     private Usuario usuario ;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
