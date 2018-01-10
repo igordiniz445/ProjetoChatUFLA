@@ -52,7 +52,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Num Matricula" />
+                    android:text="Num Matricula:" />
 
                 <EditText
                     android:id="@+id/signup_Matricula"
@@ -63,7 +63,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Usuário " />
+                    android:text="Departamento: " />
 
                 <EditText
                     android:id="@+id/signup_User"

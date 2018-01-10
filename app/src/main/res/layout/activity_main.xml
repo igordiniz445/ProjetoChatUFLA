@@ -25,7 +25,7 @@
                 android:textSize="32dp" />
 
             <EditText
-                android:id="@+id/loguinEmail"
+                android:id="@+id/loginEmail"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="43dp"
@@ -36,7 +36,7 @@
                 android:textSize="15sp" />
 
             <EditText
-                android:id="@+id/loguinSenha"
+                android:id="@+id/loginSenha"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="18dp"

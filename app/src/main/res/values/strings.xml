@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">ProjetoSD</string>
+    <string name="title_activity_test_chat">TestChat</string>
+    <string name="tab_text_1">Eventos</string>
+    <string name="tab_text_2">Achados e Perdidos</string>
+    <string name="tab_text_3">Crush</string>
+    <string name="action_settings">Configuraçoes</string>
+    <string name="section_format">Hello World from section: %1$d</string>
 </resources>
