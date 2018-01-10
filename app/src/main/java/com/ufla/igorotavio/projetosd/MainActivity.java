@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        //auth = FirebaseAuth.getInstance();
+        auth = FirebaseAuth.getInstance();
 
         editTextEmail = (EditText)findViewById(R.id.loginEmail);
         editTextSenha = (EditText)findViewById(R.id.loginSenha);
