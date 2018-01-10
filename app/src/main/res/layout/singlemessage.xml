@@ -1,7 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
-    android:layout_height="70dp">
+    android:layout_height="70dp"
+    android:layout_margin="10dp"
+    android:orientation="vertical"
+    android:background="@drawable/messageshape">
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nome do susuario"
+            android:padding="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginLeft="5dp"
+            android:id="@+id/textUserName"
+            android:backgroundTint="@android:color/transparent"
+            android:textSize="10dp"
+            android:textStyle="bold"
+            android:textColor="@color/colorPrimaryDark" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="hora"
+            android:padding="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginLeft="5dp"
+            android:id="@+id/textMessageTime"
+            android:backgroundTint="@android:color/transparent"
+            android:textSize="10dp"
+            android:textStyle="bold"
+            android:textColor="@color/colorAccent"
+            />
+    </LinearLayout>
 
-</android.support.constraint.ConstraintLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:padding="5dp"
+        android:backgroundTint="@android:color/transparent"
+        android:text="mensagem"
+        android:id="@+id/textMessage"
+        android:layout_marginTop="-8dp"
+        android:textSize="15dp" />
+</LinearLayout>

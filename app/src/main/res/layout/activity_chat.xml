@@ -1,9 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/ChatMain"
     tools:context="com.ufla.igorotavio.projetosd.Chat">
 
-</android.support.constraint.ConstraintLayout>
+   <android.support.v7.widget.RecyclerView
+       android:layout_width="match_parent"
+       android:layout_height="match_parent"
+       android:layout_above="@+id/LinearLayout"
+       android:id="@+id/MessageREC">
+
+   </android.support.v7.widget.RecyclerView>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_alignParentBottom="true"
+        android:id="@+id/LinearLayout">
+        <EditText
+            android:layout_width="345dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/editTextMessage"/>
+        <Button
+            android:layout_width="35dp"
+            android:layout_height="30dp"
+            android:onClick="sendMessage"
+            android:background="@drawable/ic_action_name"/>
+
+    </LinearLayout>
+</RelativeLayout>
