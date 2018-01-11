@@ -8,11 +8,12 @@ import java.util.Date;
 
 public class Message {
     private String content,username;
-    private Date data;
+    private String data;
 
     public Message(String content,String username) {
         this.content = content;
         this.username = username;
+
     }
     public Message(){}
 
@@ -32,11 +33,11 @@ public class Message {
         this.username = username;
     }
 
-    public Date getData() {
+    public String getData() {
         return data;
     }
 
-    public void setData(Date data) {
+    public void setData(String data) {
         this.data = data;
     }
 }
