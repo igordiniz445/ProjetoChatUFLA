@@ -87,7 +87,7 @@ public class MainActivity extends AppCompatActivity {
                         //retornaNomeUsuarioLogado();
                         Toast.makeText(MainActivity.this, "Logado", Toast.LENGTH_LONG).show();
                         auth.getCurrentUser();
-                        Intent intent = new Intent(MainActivity.this,Chat.class);
+                        Intent intent = new Intent(MainActivity.this,Categories.class);
                         startActivity(intent);
                         finish();
 
