@@ -36,20 +36,25 @@ public class Chat extends AppCompatActivity {
     private String date;
     private FirebaseAuth.AuthStateListener mAuthListenener;
     private String nomeUsuario;
+    private String categoryName;
 
-
+    public void getIncomingIntent(){
+        if(getIntent().hasExtra("category_name")){
+            categoryName = getIntent().getStringExtra("category_name");
+        }
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat);
-
+        getIncomingIntent();
         message = findViewById(R.id.editTextMessage);
         mMessageList = (RecyclerView) findViewById(R.id.MessageREC);
         mMessageList.setHasFixedSize(true);
         LinearLayoutManager LinearLayout = new LinearLayoutManager(this);
         LinearLayout.setStackFromEnd(true);
         mMessageList.setLayoutManager(LinearLayout);
-        mDatabase = FirebaseDatabase.getInstance().getReference().child("Mensagens");
+        mDatabase = FirebaseDatabase.getInstance().getReference().child(categoryName);
         mAuth = FirebaseAuth.getInstance();
         mAuthListenener = new FirebaseAuth.AuthStateListener() {
             @Override
