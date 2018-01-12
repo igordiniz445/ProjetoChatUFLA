@@ -51,6 +51,7 @@ public class Chat extends AppCompatActivity {
         message = findViewById(R.id.editTextMessage);
         mMessageList = (RecyclerView) findViewById(R.id.MessageREC);
         mMessageList.setHasFixedSize(true);
+        this.setTitle(categoryName);
         LinearLayoutManager LinearLayout = new LinearLayoutManager(this);
         LinearLayout.setStackFromEnd(true);
         mMessageList.setLayoutManager(LinearLayout);

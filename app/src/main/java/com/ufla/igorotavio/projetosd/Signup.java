@@ -98,7 +98,6 @@ public class Signup extends AppCompatActivity {
         user.setMatricula(Integer.parseInt(matricula.getText().toString()));
         user.setSenha(senha1.getText().toString());
         user.setID(matricula.getText().toString());
-        //Toast.makeText(Signup.this, "ID"+user.getId(), Toast.LENGTH_SHORT).show();
         autentication.createUserWithEmailAndPassword(email.getText().toString(),senha1.getText().toString()).addOnCompleteListener(
             new OnCompleteListener<AuthResult>() {
                 @Override
@@ -106,7 +105,6 @@ public class Signup extends AppCompatActivity {
                     if(task.isSuccessful()){
                         String matriculaToBase64 = ConverteBase.code(user.getId());
                         user.setID(matriculaToBase64);
-                        //Toast.makeText(Signup.this, "ID depois: "+user.getId(), Toast.LENGTH_SHORT).show();
                         SalvaBD callMethod = new SalvaBD();
                         callMethod.escreve(user);
                         Toast.makeText(Signup.this, "Usuário Cadastrado com sucesso!", Toast.LENGTH_SHORT).show();

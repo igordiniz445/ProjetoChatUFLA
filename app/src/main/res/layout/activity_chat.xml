@@ -22,12 +22,13 @@
         android:layout_alignParentBottom="true"
         android:id="@+id/LinearLayout">
         <EditText
-            android:layout_width="345dp"
+            android:layout_width="350dp"
             android:layout_height="wrap_content"
             android:id="@+id/editTextMessage"/>
         <Button
             android:layout_width="35dp"
             android:layout_height="30dp"
+            android:layout_toRightof="@+id/editTextMessage"
             android:onClick="sendMessage"
             android:background="@drawable/ic_action_name"/>
 

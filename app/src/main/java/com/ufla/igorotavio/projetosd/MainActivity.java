@@ -1,4 +1,5 @@
 package com.ufla.igorotavio.projetosd;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -22,13 +23,15 @@ public class MainActivity extends AppCompatActivity {
     private Button btnLogar;
     private  boolean logou = false;
     private Usuario usuario ;
+    private ProgressDialog dialog;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        dialog = new ProgressDialog(this);
+        dialog.setCancelable(false);
         Button signup = (Button) findViewById(R.id.signup);
         signup.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -50,7 +53,8 @@ public class MainActivity extends AppCompatActivity {
                 usuario = new Usuario();
                 usuario.setEmail(editTextEmail.getText().toString());
                 usuario.setSenha(editTextSenha.getText().toString());
-
+                dialog.setMessage("Logando, aguarde...");
+                showDialog();
                 logarUsuario();
             }
         });
@@ -59,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
 
     private boolean verificaCampoEmailSenha(){
         if(editTextEmail.getText().toString().isEmpty() || editTextSenha.getText().toString().isEmpty()){
-
+            hideDialog();
             if(editTextEmail.getText().toString().isEmpty()){
                 editTextEmail.setError("Email vazio");
             }
@@ -85,7 +89,7 @@ public class MainActivity extends AppCompatActivity {
                     if (task.isSuccessful()) {
                         //pega o dados do usuario logado
                         //retornaNomeUsuarioLogado();
-                        Toast.makeText(MainActivity.this, "Logado", Toast.LENGTH_LONG).show();
+                        Toast.makeText(MainActivity.this, "Bem Vindo", Toast.LENGTH_LONG).show();
                         auth.getCurrentUser();
                         Intent intent = new Intent(MainActivity.this,Categories.class);
                         startActivity(intent);
@@ -98,22 +102,36 @@ public class MainActivity extends AppCompatActivity {
                         } catch (FirebaseAuthInvalidUserException e) {
                             erro = "E-mail inválido";
                             logou = false;
+                            hideDialog();
                         } catch (FirebaseAuthInvalidCredentialsException e) {
                             erro = "Senha inválida";
                             logou = false;
+                            hideDialog();
                         } catch (Exception e) {
                             erro = "Erro a logar\n" + e.getMessage();
                             e.printStackTrace();
                             logou = false;
+                            hideDialog();
                         }
                         //progressDialog.dimiss();
                         logou = false;
                         Toast.makeText(MainActivity.this, erro, Toast.LENGTH_LONG).show();
+                        hideDialog();
                     }
                 }
             });
 
         }
+    }
+
+    private void showDialog() {
+        if (!dialog.isShowing())
+            dialog.show();
+    }
+
+    private void hideDialog() {
+        if (dialog.isShowing())
+            dialog.dismiss();
     }
 }
 
