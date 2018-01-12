@@ -25,7 +25,7 @@ public class Categories extends AppCompatActivity {
     private void initCategories(){
         mNames.add("Geral");
         mNames.add("Eventos");
-        mNames.add("Achados\n&\nPerdidos");
+        mNames.add("Achados & Perdidos");
         initRecyclerView();
     }
 

@@ -7,9 +7,14 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
+import android.view.Gravity;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -31,11 +36,10 @@ public class Chat extends AppCompatActivity {
     private RecyclerView mMessageList;
     private FirebaseUser usuario;
     private FirebaseAuth mAuth;
-    private Calendar calendar;
+    /*private Calendar calendar;
     private SimpleDateFormat format;
-    private String date;
+    private String date;*/
     private FirebaseAuth.AuthStateListener mAuthListenener;
-    private String nomeUsuario;
     private String categoryName;
 
     public void getIncomingIntent(){
@@ -75,6 +79,12 @@ public class Chat extends AppCompatActivity {
         FirebaseRecyclerAdapter<Message,MessageViewHolder> FBRA = new FirebaseRecyclerAdapter<Message, MessageViewHolder>(Message.class,R.layout.singlemessage,MessageViewHolder.class,mDatabase) {
             @Override
             protected void populateViewHolder(MessageViewHolder viewHolder, Message model, int position) {
+                //codigo para distinguir a mensagem do usuario
+                /*if(mAuth.getCurrentUser().getEmail().equals(model.getUsername())){
+                    ((LinearLayout.LayoutParams) layout.getLayoutParams()).gravity = Gravity.RIGHT;
+                }else{
+                    ((LinearLayout.LayoutParams) layout.getLayoutParams()).gravity = Gravity.LEFT;
+                }*/
                 viewHolder.setContent(model.getContent());
                 viewHolder.setUsername(model.getUsername());
                 viewHolder.setTime(model.getData());

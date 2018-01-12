@@ -28,7 +28,6 @@
         <Button
             android:layout_width="35dp"
             android:layout_height="30dp"
-            android:layout_toRightof="@+id/editTextMessage"
             android:onClick="sendMessage"
             android:background="@drawable/ic_action_name"/>
 
