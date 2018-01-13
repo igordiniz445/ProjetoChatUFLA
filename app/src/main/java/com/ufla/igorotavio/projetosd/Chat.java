@@ -103,7 +103,7 @@ public class Chat extends AppCompatActivity {
         final String menssagem = message.getText().toString();
         usuario = mAuth.getCurrentUser();
         calendar = Calendar.getInstance();
-        format = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
+        format = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
         format.setTimeZone(TimeZone.getTimeZone("America/Sao_Paulo"));
         date = format.format(Calendar.getInstance().getTime());
         mDatabaseUser = FirebaseDatabase.getInstance().getReference().child("Users").child(usuario.getUid());

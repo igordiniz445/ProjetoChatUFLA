@@ -67,7 +67,6 @@ public class MainActivity extends AppCompatActivity {
             if(editTextEmail.getText().toString().isEmpty()){
                 editTextEmail.setError("Email vazio");
             }
-
             if(editTextSenha.getText().toString().isEmpty()){
                 editTextSenha.setError("Senha vazia");
             }
