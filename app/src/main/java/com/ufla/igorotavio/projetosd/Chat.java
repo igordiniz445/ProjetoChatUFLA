@@ -27,6 +27,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.TimeZone;
 import java.util.logging.SimpleFormatter;
 
 public class Chat extends AppCompatActivity {
@@ -36,9 +37,9 @@ public class Chat extends AppCompatActivity {
     private RecyclerView mMessageList;
     private FirebaseUser usuario;
     private FirebaseAuth mAuth;
-    /*private Calendar calendar;
+    private Calendar calendar;
     private SimpleDateFormat format;
-    private String date;*/
+    private String date;
     private FirebaseAuth.AuthStateListener mAuthListenener;
     private String categoryName;
 
@@ -76,7 +77,12 @@ public class Chat extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
         mAuth.addAuthStateListener(mAuthListenener);
-        FirebaseRecyclerAdapter<Message,MessageViewHolder> FBRA = new FirebaseRecyclerAdapter<Message, MessageViewHolder>(Message.class,R.layout.singlemessage,MessageViewHolder.class,mDatabase) {
+        FirebaseRecyclerAdapter<Message,MessageViewHolder> FBRA = new FirebaseRecyclerAdapter<Message, MessageViewHolder>(
+                Message.class,
+                R.layout.singlemessage,
+                MessageViewHolder.class
+                ,mDatabase
+        ) {
             @Override
             protected void populateViewHolder(MessageViewHolder viewHolder, Message model, int position) {
                 //codigo para distinguir a mensagem do usuario
@@ -87,7 +93,7 @@ public class Chat extends AppCompatActivity {
                 }*/
                 viewHolder.setContent(model.getContent());
                 viewHolder.setUsername(model.getUsername());
-                viewHolder.setTime(model.getData());
+                viewHolder.setTime(model.getTime());
             }
         };
         mMessageList.setAdapter(FBRA);
@@ -96,9 +102,10 @@ public class Chat extends AppCompatActivity {
     public void sendMessage(View view) {
         final String menssagem = message.getText().toString();
         usuario = mAuth.getCurrentUser();
-        /*calendar = Calendar.getInstance();
+        calendar = Calendar.getInstance();
         format = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
-        date = format.format(calendar.getTime());*/
+        format.setTimeZone(TimeZone.getTimeZone("America/Sao_Paulo"));
+        date = format.format(Calendar.getInstance().getTime());
         mDatabaseUser = FirebaseDatabase.getInstance().getReference().child("Users").child(usuario.getUid());
         if(!TextUtils.isEmpty(menssagem)){
             final DatabaseReference newPost = mDatabase.push();
@@ -107,7 +114,7 @@ public class Chat extends AppCompatActivity {
                 public void onDataChange(DataSnapshot dataSnapshot) {
                     newPost.child("content").setValue(menssagem);
                     newPost.child("username").setValue(usuario.getEmail());
-                    /*newPost.child("time").setValue(date);*/
+                    newPost.child("time").setValue(date);
                     message.setText("");
                     mMessageList.scrollToPosition(mMessageList.getAdapter().getItemCount());
                 }

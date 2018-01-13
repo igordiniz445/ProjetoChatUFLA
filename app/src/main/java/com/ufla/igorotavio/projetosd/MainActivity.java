@@ -89,7 +89,6 @@ public class MainActivity extends AppCompatActivity {
                     if (task.isSuccessful()) {
                         //pega o dados do usuario logado
                         //retornaNomeUsuarioLogado();
-                        Toast.makeText(MainActivity.this, "Bem Vindo", Toast.LENGTH_LONG).show();
                         auth.getCurrentUser();
                         Intent intent = new Intent(MainActivity.this,Categories.class);
                         startActivity(intent);
