@@ -84,6 +84,9 @@ public class Signup extends AppCompatActivity {
             senha2.setEnabled(true);
             senha1.setEnabled(true);
             Toast.makeText(this, "Senhas não conferem", Toast.LENGTH_SHORT).show();
+        }else if(!email.getText().toString().contains(".ufla.br")){
+            email.setEnabled(true);
+            email.setError("Deve ser um Email da UFLA");
         }else{
             showDialog();
             cadastraUsuario();
@@ -143,5 +146,6 @@ public class Signup extends AppCompatActivity {
         if (dialog.isShowing())
             dialog.dismiss();
     }
+
 }
 
